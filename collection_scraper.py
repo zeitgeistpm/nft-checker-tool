@@ -15,16 +15,19 @@ def nft_checker(collections, json_name):
         driver.get(f'https://singular.rmrk.app/collections/{collection}')
 
         nft_collection = []
-        try:
+        try:    
             pages = driver.find_element_by_class_name('css-1bsyzis')
             pagination = int(pages.text.split('/')[-1])
+            print(f'This collection has a total of {pagination} pages')
             for page in range(pagination):
+                actual_page = page+1
+                print(f'Scraping page number {actual_page}')
+                driver.get(f'https://singular.rmrk.app/collections/{collection}?page={actual_page}')
                 sleep(1)
                 nfts_to_check = driver.find_elements_by_class_name('css-riqgpc')
                 for nft in nfts_to_check:
                     ref = nft.get_attribute('href').split('/')[-1]
                     nft_collection += [ref]
-                driver.find_element_by_xpath('//*[@id="collection-paginated-list"]/div[3]/div/button[2]').click()
         except:
             nfts_to_check = driver.find_elements_by_class_name('css-riqgpc')
             for nft in nfts_to_check:
