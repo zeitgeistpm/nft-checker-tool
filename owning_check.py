@@ -7,7 +7,7 @@ def nft_checker(address, collection_file):
 
     option = webdriver.ChromeOptions()
     option.add_argument('headless')
-    driver = webdriver.Chrome(executable_path = r'../chromedriver',options=option)
+    driver = webdriver.Chrome(executable_path = r'./chromedriver',options=option)
     driver.maximize_window()
     driver.implicitly_wait(10)
     driver.get(f'https://singular.rmrk.app/space/{address}')
