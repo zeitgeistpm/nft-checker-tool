@@ -6,7 +6,7 @@ from selenium.webdriver.chrome.options import Options  # for suppressing the bro
 def nft_checker(collections, json_name):
     option = webdriver.ChromeOptions()
     option.add_argument('headless')
-    driver = webdriver.Chrome(executable_path = r'../chromedriver',options=option)
+    driver = webdriver.Chrome(executable_path = r'./chromedriver',options=option)
     driver.maximize_window()
     driver.implicitly_wait(10)
 
